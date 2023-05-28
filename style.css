@@ -77,6 +77,21 @@ boby{
     display: inline-block;
     transform: rotate(calc(-30deg * var(--i)));
 }
+.circle{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+.circle_tow{
+    height: 240px;
+    width: 240px;
+}
+.circle_three{
+    height: 180px;
+    width: 180px;
+}
 
 
 

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+boby{
+    background:#2f363e;
+}
+.container{
+    background:#8ba1bb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+
+}
+.clock{
+    position: relative;
+    width: 450px;
+    height: 450px;
+    background: #2f363e;
+    box-shadow: 10px;
+    border-radius: 50%;
+    box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
+    
+    ;
+}

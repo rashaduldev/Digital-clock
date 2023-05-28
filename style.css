@@ -60,6 +60,7 @@ boby{
     background: #2f363e;
     border: 3px solid #fff;
     border-radius: 50%;
+    z-index: 100000;
 }
 
 .clock span{
@@ -83,16 +84,48 @@ boby{
     width: 300px;
     border: 2px solid black;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.circle i{
+    position: absolute;
+    width: 6px;
+    height: 50%;
+    background: var(--clr);
+    opacity: 0.75;
+    transform-origin: bottom;
+    transform: scaleY(0.5);
+    z-index: 10;
+}
+.circle:nth-child(1) i{
+    width: 2px;
+}
+.circle:nth-child(2) i{
+    width: 6px;
 }
 .circle_tow{
     height: 240px;
     width: 240px;
+    z-index: 9;
 }
 .circle_three{
     height: 180px;
     width: 180px;
+    z-index: 8;
 }
-
+.circle::before{
+    content: '';
+    position: absolute;
+    top: -8.5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--clr);
+    box-shadow: 0 0 20px var(--clr),
+    0 0 60px var(--clr)
+    ;
+}
 
 
 

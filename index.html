@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock || Using JS</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="icon" href=""> -->
+    <link rel="icon" href="title-side-stripes-wooden-clock-1.jpg">
 </head>
 <body class="bodyy">
     <div class="container">
@@ -30,14 +30,17 @@
         </div>
     </div>
 
-    <script src="#">
+    <script>
         let hr = document.querySelector('#hr');
         let mn = document.querySelector('#mn');
         let sc = document.querySelector('#sc');
-        let day=new data();
-        let hh = day.gethours   ()   *30;
-        let mm = day.getminutes ()   *6;
-        let ss = day.getseconds ()   *6;
+
+        let day=new Date();
+        let hh = day.getHours   ()   *30;
+        let mm = day.getMinutes ()   *6;
+        let ss = day.getSeconds ()   *6;
+
+        hr.style.transform =`rotateZ(${hh+(mm/12)}deg)`;
 
     </script>
 

@@ -28,9 +28,10 @@ boby{
     border-top-right-radius: 225px;
     box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
     inset 5px 5px 10px rgba(0,0,0,0.5),
-    inset 5px 5px 20px rgba(0,0,0,0.2),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
     inset -5px -5px 15px rgba(0,0,0,0.75);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -44,7 +45,7 @@ boby{
     border-radius: 50%;
     box-shadow: 10px 50px 70px rgba(0,0,0,0.25),
     inset 5px 5px 10px rgba(0,0,0,0.5),
-    inset 5px 5px 20px rgba(0,0,0,0.2),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
     inset -5px -5px 15px rgba(0,0,0,0.75);
     display: flex;
     justify-content: center;
@@ -126,10 +127,33 @@ boby{
     0 0 60px var(--clr)
     ;
 }
-
-
-
-
+/* Digital Clock style */
+#time{
+    display: flex;
+    margin-bottom: 40px;
+    padding: 10px 20px;
+    font-size: 2em;
+    font-weight: 600;
+    border: 2px solid rgba(0,0,0,0.5);
+    border-radius: 40px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.25),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
+    /* inset 5px 5px 20px rgba(0,0,0,0.2), */
+    inset -5px -5px 15px rgba(0,0,0,0.75);
+}
+#time div{
+    position: relative;
+    width: 60px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--clr);
+}
+#time div:nth-child(1)::after,
+#time div:nth-child(2)::after{
+    content: ':';
+    position: absolute;
+    right: -4px;
+}
 
 
 

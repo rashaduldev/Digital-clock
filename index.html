@@ -31,9 +31,9 @@
 
         <!-- Digital Clock  -->
         <div id="time">
-            <div id="hour"  style="--clr: #ff2972;">00</div>
+            <div id="hours"  style="--clr: #ff2972;">00</div>
             <div id="munites" style="--clr: #fee800;">00</div>
-            <div id="second" style="--clr: #04fc43;">00</div>
+            <div id="seconds" style="--clr: #04fc43;">00</div>
             <div id="ampm">AM</div>
         </div>
 
@@ -54,6 +54,21 @@ setInterval(()=>{
         hr.style.transform =`rotateZ(${hh+(mm/12)}deg)`;
         mn.style.transform =`rotateZ(${mm}deg)`;
         sc.style.transform =`rotateZ(${ss}deg)`;
+ 
+        // Digtal clock
+        let hours = document.getElementById('hour');
+        let munites = document.getElementById('munites');
+        let seconds = document.getElementById('seconds');
+        let amp = document.getElementById('amp');
+
+        let h =new Date().getHours();
+        let m =new Date().getMinutes();
+        let s =new Date().getSeconds();
+
+        // add zero before single digit number
+        hours.innerHTML=h;
+        munites.innerHTML=m;
+        seconds.innerHTML=s;
 
 })
 

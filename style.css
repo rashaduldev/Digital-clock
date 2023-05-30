@@ -162,6 +162,17 @@ boby{
     align-items: center;
     color: #fff;
 }
+#time div:nth-child(2)::after{
+    animation: animate 1s steps(1) infinite;
+}
+@keyframes animate{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
 
 
 

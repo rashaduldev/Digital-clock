@@ -155,7 +155,13 @@ boby{
     right: -4px;
 }
 
-
+#time div:last-child{
+    font-size: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
 
 
 

@@ -173,45 +173,53 @@ boby{
         opacity: 0;
     }
 }
+/* Responsive for Mobile Devices */
+@media (max-width: 768px) {
+  .clock {
+    width: 280px;
+    height: 280px;
+    margin-bottom: 30px;
+  }
 
+  .clock span b {
+    font-size: 1.2rem;
+  }
 
+  .circle {
+    height: 180px;
+    width: 180px;
+  }
 
+  .circle_tow {
+    height: 140px;
+    width: 140px;
+  }
 
+  .circle_three {
+    height: 100px;
+    width: 100px;
+  }
 
+  #time {
+    flex-wrap: wrap;
+    font-size: 1.5em;
+    padding: 10px 15px;
+    margin-bottom: 30px;
+  }
 
+  #time div {
+    width: 50px;
+    font-size: 0.9em;
+  }
 
+  #time div:last-child {
+    font-size: 0.6em;
+    margin-top: 10px;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .container {
+    padding: 20px;
+    border-top-left-radius: 150px;
+    border-top-right-radius: 150px;
+  }
+}

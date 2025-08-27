@@ -2,42 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Clock || Using JS</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="title-side-stripes-wooden-clock-1.jpg" />
+  <title>Modern Digital Clock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bodyy">
-  <main class="container">
-    
-    <section class="clock">
-      <div class="circle" id="sc" style="--clr: #04fc43;"><i></i></div>
-      <div class="circle circle_tow" id="mn" style="--clr: #fee800;"><i></i></div>
-      <div class="circle circle_three" id="hr" style="--clr: #ff2972;"><i></i></div>
+<body class="flex justify-center items-center min-h-screen bg-gray-900 text-white">
 
-      <span style="--i:1;"><b>1</b></span>
-      <span style="--i:2;"><b>2</b></span>
-      <span style="--i:3;"><b>3</b></span>
-      <span style="--i:4;"><b>4</b></span>
-      <span style="--i:5;"><b>5</b></span>
-      <span style="--i:6;"><b>6</b></span>
-      <span style="--i:7;"><b>7</b></span>
-      <span style="--i:8;"><b>8</b></span>
-      <span style="--i:9;"><b>9</b></span>
-      <span style="--i:10;"><b>10</b></span>
-      <span style="--i:11;"><b>11</b></span>
-      <span style="--i:12;"><b>12</b></span>
+  <main class="flex flex-col items-center justify-center bg-gray-800 rounded-[40px] 
+              shadow-[10px_20px_40px_rgba(0,0,0,0.4),inset_4px_4px_10px_rgba(255,255,255,0.1),inset_-4px_-4px_10px_rgba(0,0,0,0.6)]
+              p-6 md:p-10">
+    
+    <!-- Analog Clock -->
+    <section class="relative flex justify-center items-center w-72 h-72 md:w-[420px] md:h-[420px] rounded-full 
+                    shadow-[10px_20px_40px_rgba(0,0,0,0.25),inset_4px_4px_10px_rgba(255,255,255,0.1),inset_-4px_-4px_10px_rgba(0,0,0,0.7)]
+                    bg-gray-900 mb-8">
+      
+      <!-- Center Dot -->
+      <div class="absolute w-4 h-4 rounded-full bg-gray-900 border-2 border-white z-50"></div>
+
+      <!-- Numbers -->
+      <template id="clock-numbers"></template>
+
+      <!-- Hour Hand -->
+      <div id="hr" class="absolute flex justify-center items-start w-40 h-40 rounded-full">
+        <i class="block w-2 h-1/2 bg-pink-500 rounded origin-bottom"></i>
+      </div>
+
+      <!-- Minute Hand -->
+      <div id="mn" class="absolute flex justify-center items-start w-56 h-56 rounded-full">
+        <i class="block w-[6px] h-1/2 bg-yellow-400 rounded origin-bottom"></i>
+      </div>
+
+      <!-- Second Hand -->
+      <div id="sc" class="absolute flex justify-center items-start w-72 h-72 rounded-full">
+        <i class="block w-[2px] h-1/2 bg-green-400 rounded origin-bottom"></i>
+      </div>
     </section>
 
-    <section id="time">
-    <div id="hours" style="--clr: #ff2972;">00</div>
-    <div id="munites" style="--clr: #fee800;">00</div>
-    <div id="seconds" style="--clr: #04fc43;">00</div>
-    <span id="ampm">AM</span>
+    <!-- Digital Clock -->
+    <section id="time" 
+      class="flex items-center gap-2 px-6 py-3 rounded-2xl border border-gray-700 text-2xl md:text-4xl 
+             font-bold tracking-wider shadow-[inset_4px_4px_10px_rgba(255,255,255,0.1),inset_-4px_-4px_10px_rgba(0,0,0,0.6)]">
+      
+      <div id="hours" class="text-pink-500">00</div>
+      <span>:</span>
+      <div id="minutes" class="text-yellow-400">00</div>
+      <span>:</span>
+      <div id="seconds" class="text-green-400">00</div>
+      <span id="ampm" class="ml-2 text-sm md:text-lg text-white">AM</span>
     </section>
-    
+
   </main>
-  <script src="script.js"></script>
+
+  <script>
+    const template = document.getElementById("clock-numbers");
+    const clockSection = document.querySelector("section");
+    for (let i = 1; i <= 12; i++) {
+      const span = document.createElement("span");
+      span.innerHTML = `<b class="absolute text-lg md:text-2xl font-semibold opacity-70 transform 
+                              -translate-x-1/2 -translate-y-1/2"
+                              style="transform: rotate(${i * 30}deg) translate(140px) rotate(-${i * 30}deg);">
+                              ${i}</b>`;
+      clockSection.appendChild(span);
+    }
+
+    // Clock Logic
+    const hr = document.getElementById("hr").querySelector("i");
+    const mn = document.getElementById("mn").querySelector("i");
+    const sc = document.getElementById("sc").querySelector("i");
+
+    const hoursDiv = document.getElementById("hours");
+    const minutesDiv = document.getElementById("minutes");
+    const secondsDiv = document.getElementById("seconds");
+    const ampmDiv = document.getElementById("ampm");
+
+    function updateClock() {
+      let now = new Date();
+      let h = now.getHours();
+      let m = now.getMinutes();
+      let s = now.getSeconds();
+      let ampm = h >= 12 ? "PM" : "AM";
+
+      let hDeg = (h % 12) * 30 + m * 0.5;
+      let mDeg = m * 6;
+      let sDeg = s * 6;
+
+      hr.style.transform = `rotate(${hDeg}deg)`;
+      mn.style.transform = `rotate(${mDeg}deg)`;
+      sc.style.transform = `rotate(${sDeg}deg)`;
+
+      hoursDiv.textContent = (h % 12 || 12).toString().padStart(2, "0");
+      minutesDiv.textContent = m.toString().padStart(2, "0");
+      secondsDiv.textContent = s.toString().padStart(2, "0");
+      ampmDiv.textContent = ampm;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
 </body>
 </html>
